@@ -1,4 +1,6 @@
+import json
 import re
+import random
 
 levels = {
   "beginner": {"chances": 8},
@@ -8,9 +10,7 @@ levels = {
 
 languages = {
   "english": "en",
-  "german": "de",
-  "italian": "it",
-  "spanish": "es"
+  "polish": "pl"
 }
 
 mode = {
@@ -64,7 +64,14 @@ class Hangman(Game):
     return Round(word, self.level['chances'])
 
   def get_word(self):
-    return 'qwertyy'
+    if self.players_count == 2:
+      return input("Get new word: ")
+    
+    file = open(f'./words/{self.language}.json')
+    data = json.load(file)
+    word = data[random.randrange(0,len(data))]
+    file.close()
+    return word
 
 
 class Round:
