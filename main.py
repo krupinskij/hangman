@@ -1,15 +1,34 @@
-class Game:
-  def __init__(self, players_count):
-      self.players_count = players_count
+levels = {
+    "beginner": {"chances": 8},
+    "intermediate": {"chances": 5},
+    "advanced": {"chances": 3}
+}
 
-  def __play(self):
-    print("Game started")
+languages = {
+    "english": "en",
+    "german": "de",
+    "italian": "it",
+    "spanish": "es"
+}
+
+mode = {
+    "single": 1,
+    "multiplayer": 2
+}
+
+
+class Game:
+    def __init__(self, players_count):
+        self.players_count = players_count
+
+    def __play(self):
+        print("Game started")
 
 
 class Hangman(Game):
-  def __init__(self, players_count):
-      super().__init__(players_count)
+    def __init__(self, players_count, level):
+        super().__init__(players_count)
+        self.level = level
 
 
-
-hangman = Hangman(1)
+hangman = Hangman(mode["single"], levels["beginner"])
