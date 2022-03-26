@@ -116,7 +116,7 @@ class Hangman(Game):
       if check_letter(letter):
         return letter
       else:
-        print(f"{letter} {colors['error']}is not a letter! Try again!{colors['reset']}")
+        print(f"\"{letter}\" {colors['error']}is not a letter! Try again!{colors['reset']}")
 
   def get_word(self):
     if self.players_count == 2:
@@ -130,7 +130,7 @@ class Hangman(Game):
           print(f"{colors['error']}It is not a valid word! Try again!{colors['reset']}")
           print()
     
-    file = open(f'./words/{self.language}.json')
+    file = open(f'./words/{self.language}.json', encoding="utf-8")
     data = json.load(file)
     word = data[random.randrange(0,len(data))]
     file.close()
@@ -146,12 +146,14 @@ class Round:
     self.chances = chances
 
   def check_letter(self, letter):
-    if letter in self.word:
-      self.correct_letters.add(letter)
-      self.hidden_word = re.sub(f"[^{''.join(self.correct_letters)}]", '*', self.word)
+    lower_letter = letter.lower()
+    lower_word = self.word.lower()
+    if lower_letter in lower_word:
+      self.correct_letters.add(lower_letter)
+      self.hidden_word = re.sub(f"[^{''.join(self.correct_letters)}]", '*', lower_word)
       return True
     else:
-      self.wrong_letters.add(letter)
+      self.wrong_letters.add(lower_letter)
       self.chances -= 1;
       return False
 
@@ -191,7 +193,7 @@ def check_word(word):
 
 mode_input = select_option(mode, "mode")
 levels_input = select_option(levels, "level")
-if mode_input == mode["single"]:
+if mode_input == "single":
   languages_input = select_option(languages, "language")
 else:
   languages_input = "english"
