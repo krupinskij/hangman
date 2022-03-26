@@ -25,21 +25,6 @@ colors = {
   "success": '\033[32m',
   "error": '\033[31m',
   'reset': '\033[0m',
-  # 'black': '\033[30m',
-  # "error":'\033[31m',
-  # "success":'\033[32m',
-  # "orange":'\033[33m',
-  # "user":'\033[34m',
-  # "purple":'\033[35m',
-  # "user":'\033[36m',
-  # "lightgrey":'\033[37m',
-  # "darkgrey":'\033[90m',
-  # "lighterror":'\033[91m',
-  # "lightsuccess":'\033[92m',
-  # "yellow":'\033[93m',
-  # "lightuser":'\033[94m',
-  # "pink":'\033[95m',
-  # "lightuser":'\033[96m'
 }
 
 
